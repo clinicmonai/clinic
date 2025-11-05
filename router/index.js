@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 
 const routes = [
-    { path: '/home', name: 'Home', component: App }
+    { path: '/', name: 'Home', component: App }
 ];
 
 const router = createRouter({
