@@ -40,7 +40,7 @@
 :root {
   --color-white: #fff;
   --color-shadow: rgba(0, 0, 0, 0.7);
-  --font-family-base: "Fahkwang", sans-serif;
+  --font-family-base: "Figtree", sans-serif;
   --header-height-nav: 100px;
   --header-height-banner: 100vh;
   --font-size-banner: 2.5rem;
@@ -83,7 +83,7 @@ body {
 body,
 h1, h2, h3, h4, h5, h6,
 select {
-  font-family: 'Fahkwang', sans-serif !important;
+  font-family: 'Figtree', sans-serif !important;
 }
 
 
