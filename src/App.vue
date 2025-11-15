@@ -3,6 +3,7 @@
     <!-- https://uxpilot.ai/a/ui-design?page=lqe4VcpSwooQoktDaHRw -->
     <NavegationSection />
     <HeroSection />
+    <NossosTratamentos />
 
 </template>
 
@@ -11,6 +12,7 @@ import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 import HeroSection from './components/HeroSection.vue'
 import NavegationSection from './components/NavegationSection.vue'
+import NossosTratamentos from './components/NossosTratamentos.vue'
 
 onMounted(() => {
     initFlowbite()
