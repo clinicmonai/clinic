@@ -25,6 +25,7 @@ import CardNossoTratamento from './ui/CardNossoTratamento.vue';
 
 .max_container {
     width: 100%;
+    padding: 0 1.3rem;
 }
 
 .title_nossos_tratamentos {
@@ -38,6 +39,7 @@ import CardNossoTratamento from './ui/CardNossoTratamento.vue';
     .max_container {
         max-width: 1440px;
         margin: 0 auto;
+        padding: 0;
     }
 }
 
