@@ -4,7 +4,15 @@ export const tratamentos = [
         descricao: "O Botox é um tratamento indicado para suavizar linhas de expressão e prevenir o aparecimento de rugas. Seu principal objetivo é proporcionar uma aparência mais leve e descansada, preservando a naturalidade e a harmonia facial."
     },
     {
-        titulo: "Preenchimento",
+        titulo: "Rinomodelação",
+        descricao: "A rinomodelação com ácido hialurônico melhora o formato do nariz sem cirurgia. Com pequenas aplicações, é possível alinhar o dorso, levantar a ponta e corrigir assimetrias, oferecendo um resultado imediato e natural."
+    },
+    {
+        titulo: "Preenchimento labial",
+        descricao: "O preenchimento labial com ácido hialurônico aumenta o volume, define o contorno e hidrata os lábios, mantendo a naturalidade. É um procedimento rápido, com resultado imediato e pensado para realçar a beleza de forma elegante."
+    },
+    {
+        titulo: "Preenchimentos faciais",
         descricao: "O preenchimento facial devolve volume, contorno e sustentação às áreas que sofreram perda com o tempo. É indicado para realçar os traços naturais, equilibrar proporções e promover rejuvenescimento de forma sutil e segura."
     },
     {
@@ -34,7 +42,7 @@ export const tratamentos = [
     {
         titulo: "Mesoterapia Capilar",
         descricao: "A mesoterapia capilar é um tratamento que fortalece os fios e estimula o crescimento capilar por meio da aplicação de vitaminas e ativos diretamente no couro cabeludo. Proporciona nutrição profunda e melhora significativa na qualidade dos fios."
-    }
+    }    
 ];
 
 

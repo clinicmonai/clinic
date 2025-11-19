@@ -1,13 +1,16 @@
 <template>
-  <div class="container">
+  <div id="inicio" class="container">
     <div class="content">
       <div class="left">
         <h1 class="titulo--principal">
-          Redescrubra sua <br> <span>melhor versão</span>
+          Beleza em cada <span>detalhe</span>
         </h1>
         <p class="paragrafo">
-          Descubra tratamentos estéticos de excelência que realçam sua beleza natural. Nossa equipe especializada
-          oferece os procedimentos mais modernos e seguros para você se sentir ainda mais confiante.
+          Na Monai, acreditamos que cuidar do rosto é valorizar sua história. Unimos técnicas avançadas, precisão e
+          naturalidade para oferecer os melhores tratamentos em rejuvenescimento facial, harmonização e revitalização da
+          pele.
+          Aqui, cada detalhe importa — e cada paciente é acolhido com atenção, conforto e resultados que elevam a
+          autoestima com elegância.
         </p>
         <div class="btn_agenda"><button @click="abrirWhatsapp" href="#">Agende sua Consulta</button></div>
       </div>
@@ -20,8 +23,8 @@
 
 <script setup>
 const abrirWhatsapp = () => {
-  const numero = '5561993029884'; 
-  const mensagem = encodeURIComponent('Olá, quero saber mais sobre os tratamentos!');
+  const numero = '5561995002107';
+  const mensagem = encodeURIComponent('Olá! Tenho interesse em marcar uma consulta na Monai.');
   const url = `https://wa.me/${numero}?text=${mensagem}`;
   window.open(url, '_blank');
 };
@@ -58,16 +61,17 @@ const abrirWhatsapp = () => {
   font-weight: bold;
   line-height: 110%;
   text-align: start;
+  color: #333333;
 
   span {
-    color: #e2ab34;
+    color: #7e7d7b;
     font-weight: bold;
   }
 }
 
 .paragrafo {
   font-size: 1rem;
-  color: #5c5453;
+  color: #333333;
   text-align: start;
   line-height: 1.6;
 }
@@ -157,7 +161,7 @@ const abrirWhatsapp = () => {
 
   .paragrafo {
     font-size: 1.45rem;
-    text-align: justify;
+    text-align: start;
   }
 
   .right {

@@ -4,7 +4,9 @@
     <NavegationSection />
     <HeroSection />
     <NossosTratamentos />
-
+    <Doutoras />
+    <br>
+    <br>
 </template>
 
 <script setup>
@@ -13,6 +15,7 @@ import { initFlowbite } from 'flowbite'
 import HeroSection from './components/HeroSection.vue'
 import NavegationSection from './components/NavegationSection.vue'
 import NossosTratamentos from './components/NossosTratamentos.vue'
+import Doutoras from './components/Doutoras.vue'
 
 onMounted(() => {
     initFlowbite()

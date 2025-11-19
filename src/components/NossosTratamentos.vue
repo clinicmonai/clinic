@@ -1,12 +1,13 @@
 <template>
 
-    <div class="container">
+    <div id="tratamentos" class="container">
         <div class="max_container">
             <div class="title_nossos_tratamentos">
                 Nossos Tratamentos
             </div>
             <CardNossoTratamento />
         </div>
+        <br> <br> <br>
     </div>
 
 </template>
@@ -39,7 +40,7 @@ import CardNossoTratamento from './ui/CardNossoTratamento.vue';
     .max_container {
         max-width: 1440px;
         margin: 0 auto;
-        padding: 0;
+        padding: 0 2rem;
     }
 }
 
