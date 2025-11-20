@@ -10,12 +10,24 @@
 </template>
 
 <script setup>
+
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 import HeroSection from './components/HeroSection.vue'
 import NavegationSection from './components/NavegationSection.vue'
 import NossosTratamentos from './components/NossosTratamentos.vue'
 import Doutoras from './components/Doutoras.vue'
+import { useSEO } from '../composables/useSEO'
+import { clinicSchema } from '../utils/schemas'
+
+
+useSEO({
+    title: 'Página Inicial',
+    description: 'Bem-vindo ao Monai Clinic - Sistema de gestão completo',
+    url: 'https://monaiclinic.com.br/',
+    schema: clinicSchema
+})
+
 
 onMounted(() => {
     initFlowbite()

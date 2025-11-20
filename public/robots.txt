@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://monaiclinic.com.br/sitemap.xml
+
+# Disallow admin pages (se tiver)
+Disallow: /admin/
+Disallow: /api/
+
+# Host
+Host: monaiclinic.com.br
