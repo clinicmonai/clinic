@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Monai Clinic - Beleza natural, cuidado real. Harmonização facial avançada e estética com excelência.">
+    <title>Monai Clinic | Beleza Natural, Cuidado Real</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Fahkwang */
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-ExtraLight.ttf') format('truetype');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-ExtraLightItalic.ttf') format('truetype');
+            font-weight: 200;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-LightItalic.ttf') format('truetype');
+            font-weight: 300;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-MediumItalic.ttf') format('truetype');
+            font-weight: 500;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-SemiBoldItalic.ttf') format('truetype');
+            font-weight: 600;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Fahkwang';
+            src: url('/fahkwang/Fahkwang-BoldItalic.ttf') format('truetype');
+            font-weight: 700;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        /* ============================================
+           VARIABLES & RESET
+           ============================================ */
+        :root {
+            --color-text: #0F0E0D;
+            --color-gold: #ADA495;
+            --color-beige-light: #D8D5CF;
+            --color-offwhite: #F1F0EC;
+            --color-white: #FFFFFF;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Fahkwang', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-offwhite);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           HEADER / NAVIGATION
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition-smooth);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(241, 240, 236, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(15, 14, 13, 0.05);
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--color-text);
+        }
+
+        .header.scrolled .logo {
+            font-size: 1.5rem;
+        }
+
+        /* Substitua o texto abaixo pela imagem do logo: 
+           <img src="./assets/logo.png" alt="Monai Clinic"> */
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1;
+        }
+
+        .logo-text span:first-child {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span:last-child {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-top: 4px;
+            font-family: var(--font-sans);
+            font-weight: 300;
+        }
+
+        .nav-desktop {
+            display: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-text);
+            margin: 0 1.5rem;
+            position: relative;
+            padding-bottom: 4px;
+            font-weight: 400;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--color-gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: #9a9183;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(173, 164, 149, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 1px solid var(--color-gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .mobile-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--color-offwhite);
+            padding: 6rem 3rem 2rem;
+            transition: right 0.4s ease;
+            z-index: 999;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu .nav-link {
+            display: block;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .mobile-menu .btn {
+            margin-top: 2rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 14, 13, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--color-offwhite);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            order: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            display: block;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .hero-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            order: 1;
+            position: relative;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            border-radius: 2px;
+            /* Imagem: 01.jpg - Foto principal da clínica/hero */
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--color-gold);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           SECTIONS GENERAL
+           ============================================ */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--color-text);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ============================================
+           TREATMENTS SECTION
+           ============================================ */
+        .treatments {
+            background: var(--color-white);
+        }
+
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .treatment-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-beige-light);
+            padding: 2.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .treatment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .treatment-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(15, 14, 13, 0.08);
+        }
+
+        .treatment-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .treatment-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+
+        .treatment-icon {
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+        }
+
+        .treatment-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .treatment-description {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about {
+            background: var(--color-offwhite);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            /* Imagem: doutoras.jpeg - Dra. Natacha Passos e Dra. Wllyenne Alarcão */
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--color-gold);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .about-content {
+            padding: 1rem 0;
+        }
+
+        .about-text {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #444;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .about-signature {
+            margin-top: 2rem;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-gold);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact {
+            background: var(--color-white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--color-beige-light);
+            background: var(--color-offwhite);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-text);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            background: var(--color-white);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-offwhite);
+            border: 1px solid var(--color-beige-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--color-gold);
+            color: var(--color-white);
+            border-color: var(--color-gold);
+        }
+
+        .contact-details h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .contact-details p {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 300;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            width: 100%;
+            height: 300px;
+            background: var(--color-offwhite);
+            border: 1px solid var(--color-beige-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Substitua o src do iframe abaixo pela URL real do Google Maps da clínica */
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition-smooth);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-text);
+            color: var(--color-beige-light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--color-gold);
+            letter-spacing: 2px;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .footer-links a {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--color-beige-light);
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(173, 164, 149, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-beige-light);
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(173, 164, 149, 0.2);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: rgba(216, 213, 207, 0.6);
+            font-weight: 300;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+                align-items: center;
+            }
+
+            .mobile-toggle {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-content {
+                order: 1;
+                text-align: left;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-description {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .treatments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 2fr 1fr 1fr;
+                text-align: left;
+            }
+
+            .social-links {
+                justify-content: flex-start;
+            }
+
+            section {
+                padding: 7rem 0;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .treatments-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .hero-image img {
+                height: 80vh;
+            }
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner" aria-label="Menu principal">
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="Monai Clinic - Voltar ao início">
+                <!-- Substitua o bloco abaixo pela imagem do logo:
+                     <img src="./assets/logo.png" alt="Monai Clinic" style="height: 40px;"> -->
+                <img src="./assets/logo.jpg" alt="Monai Clinic" style="height: 70px;">
+                <!-- <div class="logo-text">
+                    <span>Monai</span>
+                    <span>Clinic</span>
+                </div> -->
+            </a>
+
+            <nav class="nav-desktop" role="navigation" aria-label="Navegação desktop">
+                <a href="#tratamentos" class="nav-link">Tratamentos</a>
+                <a href="#sobre" class="nav-link">Sobre Nós</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="#contato" class="btn btn-primary">Agendar consulta</a>
+            </nav>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Navegação mobile">
+        <a href="#tratamentos" class="nav-link">Tratamentos</a>
+        <a href="#sobre" class="nav-link">Sobre Nós</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#contato" class="btn btn-primary">Agendar consulta</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-label="Apresentação principal">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Estética Avançada</span>
+                <h1 class="hero-title">Beleza natural.<br><em>Cuidado real.</em></h1>
+                <p class="hero-description">
+                    Harmonização facial e corporal com técnica, delicadeza e resultados que preservam a sua essência.
+                </p>
+                <a href="#tratamentos" class="btn btn-outline">Conheça nossos tratamentos</a>
+            </div>
+            <div class="hero-image">
+                <!-- Imagem: 01.jpg - Foto principal de rosto/beleza para hero -->
+                <img src="./assets/01.jpg"
+                    alt="Mulher com pele radiante representando os cuidados estéticos da Monai Clinic">
+            </div>
+        </div>
+    </section>
+
+    <!-- TREATMENTS SECTION -->
+    <section id="tratamentos" class="treatments" aria-labelledby="titulo-tratamentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Nossos Serviços</span>
+                <h2 id="titulo-tratamentos" class="section-title">Tratamentos Exclusivos</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="treatments-grid">
+                <!-- Botox -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 02.jpg -->
+                    <img src="./assets/02.jpg" alt="Tratamento de Botox" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-syringe"></i></div>
+                    <h3 class="treatment-title">Botox</h3>
+                    <p class="treatment-description">O Botox é um tratamento indicado para suavizar linhas de expressão
+                        e prevenir o aparecimento de rugas. Seu principal objetivo é proporcionar uma aparência mais
+                        leve e descansada, preservando a naturalidade e a harmonia facial.</p>
+                </article>
+
+                <!-- Rinomodelação -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 03.jpg -->
+                    <img src="./assets/03.jpg" alt="Rinomodelação" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-face-viewfinder"></i></div>
+                    <h3 class="treatment-title">Rinomodelação</h3>
+                    <p class="treatment-description">A rinomodelação com ácido hialurônico melhora o formato do nariz
+                        sem cirurgia. Com pequenas aplicações, é possível alinhar o dorso, levantar a ponta e corrigir
+                        assimetrias, oferecendo um resultado imediato e natural.</p>
+                </article>
+
+                <!-- Preenchimento Labial -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 04.jpg -->
+                    <img src="./assets/04.jpg" alt="Preenchimento Labial" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-lips"></i></div>
+                    <h3 class="treatment-title">Preenchimento Labial</h3>
+                    <p class="treatment-description">O preenchimento labial com ácido hialurônico aumenta o volume,
+                        define o contorno e hidrata os lábios, mantendo a naturalidade. É um procedimento rápido, com
+                        resultado imediato e pensado para realçar a beleza de forma elegante.</p>
+                </article>
+
+                <!-- Preenchimentos Faciais -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 05.jpg -->
+                    <img src="./assets/05.jpg" alt="Preenchimentos Faciais" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-face-smile"></i></div>
+                    <h3 class="treatment-title">Preenchimentos Faciais</h3>
+                    <p class="treatment-description">O preenchimento facial devolve volume, contorno e sustentação às
+                        áreas que sofreram perda com o tempo. É indicado para realçar os traços naturais, equilibrar
+                        proporções e promover rejuvenescimento de forma sutil e segura.</p>
+                </article>
+
+                <!-- Bioestimulador de Colágeno -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 06.jpg -->
+                    <img src="./assets/06.jpg" alt="Bioestimulador de Colágeno" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="treatment-title">Bioestimulador de Colágeno</h3>
+                    <p class="treatment-description">O bioestimulador atua de dentro para fora, estimulando a produção
+                        natural de colágeno pelo organismo. O resultado é uma pele mais firme, com melhora gradual na
+                        textura e sustentação, promovendo um rejuvenescimento progressivo e natural.</p>
+                </article>
+
+                <!-- PDRN -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 07.jpg -->
+                    <img src="./assets/07.jpg" alt="PDRN" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-dna"></i></div>
+                    <h3 class="treatment-title">PDRN</h3>
+                    <p class="treatment-description">O PDRN é um tratamento regenerador que estimula a renovação
+                        celular, melhora a textura e promove hidratação profunda da pele. Também conhecido como "DNA da
+                        pele", ele auxilia na recuperação cutânea, conferindo luminosidade e vitalidade.</p>
+                </article>
+
+                <!-- Ultrassom Microfocado -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 08.jpg -->
+                    <img src="./assets/08.jpg" alt="Ultrassom Microfocado" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-wave-square"></i></div>
+                    <h3 class="treatment-title">Ultrassom Microfocado</h3>
+                    <p class="treatment-description">O ultrassom microfocado atua nas camadas mais profundas da pele,
+                        estimulando a produção de colágeno e promovendo efeito lifting sem cortes ou agulhas. É uma
+                        tecnologia avançada, segura e eficaz no combate à flacidez facial e corporal.</p>
+                </article>
+
+                <!-- Laser PISOM -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 09.jpg -->
+                    <img src="./assets/09.jpg" alt="Laser PISOM" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="treatment-title">Laser PISOM</h3>
+                    <p class="treatment-description">O Laser PISOM é indicado para rejuvenescimento facial, clareamento
+                        de manchas, tratamento de poros dilatados e melhora da textura da pele. Sua ação estimula o
+                        colágeno e promove renovação celular, resultando em uma pele mais uniforme e saudável.</p>
+                </article>
+
+                <!-- Limpeza de Pele -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 10.jpg -->
+                    <img src="./assets/10.jpg" alt="Limpeza de Pele" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-spa"></i></div>
+                    <h3 class="treatment-title">Limpeza de Pele</h3>
+                    <p class="treatment-description">A limpeza de pele é um procedimento essencial para manter a saúde
+                        cutânea. Remove impurezas, células mortas e excesso de oleosidade, favorecendo a renovação
+                        celular e preparando a pele para receber outros tratamentos estéticos.</p>
+                </article>
+
+                <!-- Microagulhamento -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 11.jpg -->
+                    <img src="./assets/11.jpg" alt="Microagulhamento" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-mortar-pestle"></i></div>
+                    <h3 class="treatment-title">Microagulhamento</h3>
+                    <p class="treatment-description">O microagulhamento estimula a regeneração natural da pele por meio
+                        da indução de colágeno. É indicado para tratar manchas, cicatrizes de acne, linhas finas e poros
+                        dilatados, promovendo uma pele mais firme, uniforme e rejuvenescida.</p>
+                </article>
+
+                <!-- Mesoterapia Capilar -->
+                <article class="treatment-card reveal">
+                    <!-- Imagem: 13.jpg -->
+                    <img src="./assets/13.jpg" alt="Mesoterapia Capilar" class="treatment-image">
+                    <div class="treatment-icon"><i class="fas fa-user-hair"></i></div>
+                    <h3 class="treatment-title">Mesoterapia Capilar</h3>
+                    <p class="treatment-description">A mesoterapia capilar é um tratamento que fortalece os fios e
+                        estimula o crescimento capilar por meio da aplicação de vitaminas e ativos diretamente no couro
+                        cabeludo. Proporciona nutrição profunda e melhora significativa na qualidade dos fios.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="sobre" class="about" aria-labelledby="titulo-sobre">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image reveal">
+                    <!-- Imagem: doutoras.jpeg - Dra. Natacha Passos e Dra. Wllyenne Alarcão -->
+                    <img src="./assets/doutoras.jpeg"
+                        alt="Dra. Natacha Passos e Dra. Wllyenne Alarcão, idealizadoras da Monai Clinic">
+                </div>
+                <div class="about-content reveal">
+                    <span class="section-label">Nossa História</span>
+                    <h2 id="titulo-sobre" class="section-title" style="text-align: left; margin-bottom: 2rem;">Sobre Nós
+                    </h2>
+                    <div class="divider" style="margin: 0 0 2rem 0;"></div>
+                    <p class="about-text">
+                        A Monai Clinic nasceu do sonho compartilhado de duas profissionais que acreditam no poder do
+                        cuidado feito com técnica, sensibilidade e atenção aos detalhes. As idealizadoras são a Dra.
+                        Natacha Passos, cirurgiã-dentista com atuação em harmonização facial avançada, e a Dra. Wllyenne
+                        Alarcão, enfermeira pós-graduada em Estética Avançada. Elas uniram suas trajetórias,
+                        experiências e propósito para criar um espaço onde cada paciente é acolhido com
+                        responsabilidade, delicadeza e excelência. Juntas, conduzem uma visão de estética moderna,
+                        segura e natural, sempre valorizando a beleza única de cada rosto. A Monai surgiu para ser mais
+                        do que uma clínica estética: nasceu para ser um ambiente de confiança, naturalidade e cuidado
+                        verdadeiro com cada rosto e cada história.
+                    </p>
+                    <div class="about-signature">
+                        Dra. Natacha Passos & Dra. Wllyenne Alarcão
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contato" class="contact" aria-labelledby="titulo-contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Fale Conosco</span>
+                <h2 id="titulo-contato" class="section-title">Entrar em Contato</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form-wrapper reveal">
+                    <form id="contactForm" aria-label="Formulário de contato">
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" id="nome" name="nome" class="form-control"
+                                placeholder="Seu nome completo" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone" class="form-label">Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" name="telefone" class="form-control"
+                                placeholder="(00) 00000-0000" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tratamento" class="form-label">Tratamento de Interesse</label>
+                            <select id="tratamento" name="tratamento" class="form-control" required
+                                aria-required="true">
+                                <option value="" disabled selected>Selecione um tratamento</option>
+                                <option value="botox">Botox</option>
+                                <option value="rinomodelacao">Rinomodelação</option>
+                                <option value="preenchimento-labial">Preenchimento Labial</option>
+                                <option value="preenchimentos-faciais">Preenchimentos Faciais</option>
+                                <option value="bioestimulador">Bioestimulador de Colágeno</option>
+                                <option value="pdrn">PDRN</option>
+                                <option value="ultrassom">Ultrassom Microfocado</option>
+                                <option value="laser">Laser PISOM</option>
+                                <option value="limpeza">Limpeza de Pele</option>
+                                <option value="microagulhamento">Microagulhamento</option>
+                                <option value="mesoterapia">Mesoterapia Capilar</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" class="form-control"
+                                placeholder="Como podemos ajudar você?" required aria-required="true"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar mensagem</button>
+                    </form>
+                </div>
+
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Endereço</h4>
+                            <p>Av. Principal, 1234 - Sala 56<br>Centro, São Paulo - SP</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-9999</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>E-mail</h4>
+                            <p>contato@monaiclinic.com.br</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
+                                    style="color: var(--color-gold); border-bottom: 1px solid var(--color-gold);">Clique
+                                    para conversar</a></p>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <!-- Substitua o src abaixo pela URL real do embed do Google Maps da clínica -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197588976391!2d-46.65236568447564!3d-23.56461616759859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzUyLjYiUyA0NsKwMzknMDAuNSJX!5e0!3m2!1spt-BR!2sbr!4v1600000000000!5m2!1spt-BR!2sbr"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Localização da Monai Clinic no mapa"
+                            aria-label="Mapa mostrando a localização da clínica">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Conversar pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">Monai Clinic</div>
+                <p class="footer-tagline">Beleza Natural, Cuidado Real</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <a href="#tratamentos">Tratamentos</a>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="#contato">Contato</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Horário</h4>
+                <a href="#">Seg - Sex: 9h às 18h</a>
+                <a href="#">Sábado: 9h às 13h</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Monai Clinic. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', isMenuOpen);
+            mobileToggle.innerHTML = isMenuOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        }
+
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simulate form submission
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.textContent = 'Mensagem enviada!';
+                btn.style.background = '#4a7c59';
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                    this.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // Phone mask
+        const telefoneInput = document.getElementById('telefone');
+        telefoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+
+</html>
